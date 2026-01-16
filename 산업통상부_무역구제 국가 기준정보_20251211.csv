@@ -1,0 +1,212 @@
+﻿국가아이디,국가코드,국가명,국가영문명,상위국가분류아이디,사용여부,대륙구분여부
+1,AF,아프리카,Africa,,Y,Y
+2,AN,남극,Antarctica,,Y,Y
+3,AS,아시아,Asia,,Y,Y
+4,OC,호주(오세아니아),Australia (Oceania),,Y,Y
+5,EU,유럽,Europe,,Y,Y
+6,NA,북미,North America,,Y,Y
+7,SA,남미,South America,,Y,Y
+8,AFG,아프가니스탄,Afghanistan,3,Y,N
+9,ALB,알바니아,Albania,5,Y,N
+10,ALG,알제리,Algeria,1,Y,N
+11,AND,안도라,Andorra,5,Y,N
+12,ANG,앙골라,Angola,1,Y,N
+13,ANT,앤티가 바부다,Antigua and Barbuda,6,Y,N
+14,ARG,아르헨티나,Argentina,7,Y,N
+15,ARM,아르메니아,Armenia,3,Y,N
+16,ARU,아루바,Aruba,6,Y,N
+17,ASA,아메리칸사모아,American Samoa,4,Y,N
+18,AUS,오스트레일리아,Australia,4,Y,N
+19,AUT,오스트리아,Austria,5,Y,N
+20,AZE,아제르바이잔,Azerbaijan,3,Y,N
+21,BAH,바하마,Bahamas,6,Y,N
+22,BAN,방글라데시,Bangladesh,3,Y,N
+23,BAR,바베이도스,Barbados,6,Y,N
+24,BDI,부룬디,Burundi,1,Y,N
+25,BEL,벨기에,Belgium,5,Y,N
+26,BEN,베냉,Benin,1,Y,N
+27,BER,버뮤다,Bermuda,6,Y,N
+28,BHU,부탄,Bhutan,3,Y,N
+29,BIH,보스니아 헤르체고비나,Bosnia and Herzegovina,5,Y,N
+30,BIZ,벨리즈,Belize,6,Y,N
+31,BLR,벨라루스,Belarus,5,Y,N
+32,BOL,볼리비아,Bolivia,7,Y,N
+33,BOT,보츠와나,Botswana,1,Y,N
+34,BRA,브라질,Brazil,7,Y,N
+35,BRN,바레인,Bahrain,3,Y,N
+36,BRU,브루나이다루살람,Brunei,3,Y,N
+37,BUL,불가리아,Bulgaria,5,Y,N
+38,BUR,부르키나파소,Burkina Faso,1,Y,N
+39,CAF,중앙아프리카공화국,Central African Republic,1,Y,N
+40,CAM,캄보디아,Cambodia,3,Y,N
+41,CAN,캐나다,Canada,6,Y,N
+42,CAY,케이맨제도,Cayman Islands,6,Y,N
+43,CGO,콩고,Congo,1,Y,N
+44,CHA,차드,Chad,1,Y,N
+45,CHI,칠레,Chile,7,Y,N
+46,CHN,중국,China,3,Y,N
+47,CIV,코트디부아르,Ivory Coast,1,Y,N
+48,CMR,카메룬,Cameroon,1,Y,N
+49,COD,콩고민주공화국,DR Congo,1,Y,N
+50,COK,쿡 제도,Cook Islands,4,Y,N
+51,COL,콜롬비아,Colombia,7,Y,N
+52,COM,코모로,Comoros,1,Y,N
+53,CPV,카보베르데,Cape Verde,1,Y,N
+54,CRC,코스타리카,Costa Rica,6,Y,N
+55,CRO,크로아티아,Croatia,5,Y,N
+56,CUB,쿠바,Cuba,6,Y,N
+57,CYP,키프로스,Cyprus,5,Y,N
+58,CZE,체코공화국,Czech Republic,5,Y,N
+59,DEN,덴마크,Denmark,5,Y,N
+60,DJI,지부티,Djibouti,1,Y,N
+61,DMA,도미니카,Dominica,6,Y,N
+62,DOM,도미니카공화국,Dominican Republic,6,Y,N
+63,ECU,에콰도르,Ecuador,7,Y,N
+64,EGY,이집트,Egypt,1,Y,N
+65,ERI,에리트레아,Eritrea,1,Y,N
+66,ESA,엘살바도르,El Salvador,6,Y,N
+67,ESP,스페인,Spain,5,Y,N
+68,EST,에스토니아,Estonia,5,Y,N
+69,ETH,에티오피아,Ethiopia,1,Y,N
+70,FIJ,피지,Fiji,4,Y,N
+71,FIN,핀란드,Finland,5,Y,N
+72,FRA,프랑스,France,5,Y,N
+73,FSM,미크로네시아연방,Federated States of Micronesia,4,Y,N
+74,GAB,가봉,Gabon,1,Y,N
+75,GAM,감비아,The Gambia,1,Y,N
+76,GBR,영국,Great Britain,5,Y,N
+77,GBS,기니비사우,Guinea-Bissau,1,Y,N
+78,GEO,조지아,Georgia,3,Y,N
+79,GEQ,적도기니,Equatorial Guinea,1,Y,N
+80,GER,독일,Germany,5,Y,N
+81,GHA,가나,Ghana,1,Y,N
+82,GRE,그리스,Greece,5,Y,N
+83,GRN,그레나다,Grenada,7,Y,N
+84,GUA,과테말라,Guatemala,6,Y,N
+85,GUI,기니,Guinea,1,Y,N
+86,GUM,괌,Guam,4,Y,N
+87,GUY,가이아나,Guyana,7,Y,N
+88,HAI,아이티,Haiti,6,Y,N
+89,HKG,홍콩,Hong Kong,3,Y,N
+90,HON,온두라스,Honduras,6,Y,N
+91,HUN,헝가리,Hungary,5,Y,N
+92,INA,인도네시아,Indonesia,3,Y,N
+93,IND,인도,India,3,Y,N
+94,IRI,이란이슬람공화국,Iran,3,Y,N
+95,IRL,아일랜드,Ireland,5,Y,N
+96,IRQ,이라크,Iraq,3,Y,N
+97,ISL,아이슬란드,Iceland,5,Y,N
+98,ISR,이스라엘,Israel,3,Y,N
+99,ISV,미국령 버진아일랜드,Virgin Islands,7,Y,N
+100,ITA,이탈리아,Italy,5,Y,N
+101,IVB,영국령 버진아일랜드,British Virgin Islands,6,Y,N
+102,JAM,자메이카,Jamaica,6,Y,N
+103,JOR,요르단,Jordan,3,Y,N
+104,JPN,일본,Japan,3,Y,N
+105,KAZ,카자흐스탄,Kazakhstan,3,Y,N
+106,KEN,케냐,Kenya,1,Y,N
+107,KGZ,키르기스스탄,Kyrgyzstan,3,Y,N
+108,KIR,키리바시,Kiribati,4,Y,N
+109,KOR,대한민국,South Korea,3,Y,N
+110,KSA,사우디아라비아,Saudi Arabia,3,Y,N
+111,KWT,쿠웨이트,Kuwait,3,Y,N
+112,LAO,라오인민민주공화국,Laos,3,Y,N
+113,LAT,라트비아,Latvia,5,Y,N
+114,LBA,리비아,Libya,1,Y,N
+115,LBR,라이베리아,Liberia,1,Y,N
+116,LCA,세인트루시아,Saint Lucia,6,Y,N
+117,LES,레소토,Lesotho,1,Y,N
+118,LIB,레바논,Lebanon,3,Y,N
+119,LIE,리히텐슈타인,Liechtenstein,5,Y,N
+120,LTU,리투아니아,Lithuania,5,Y,N
+121,LUX,룩셈부르크,Luxembourg,5,Y,N
+122,MAD,마다가스카르,Madagascar,1,Y,N
+123,MAR,모로코,Morocco,1,Y,N
+124,MAS,말레이시아,Malaysia,3,Y,N
+125,MAW,말라위,Malawi,1,Y,N
+126,MDA,몰도바공화국,Moldova,5,Y,N
+127,MDV,몰디브,Maldives,3,Y,N
+128,MEX,멕시코,Mexico,6,Y,N
+129,MGL,몽골,Mongolia,3,Y,N
+130,MHL,마셜 제도,Marshall Islands,4,Y,N
+131,MKD,마케도니아공화국,Macedonia,5,Y,N
+132,MLI,말리,Mali,1,Y,N
+133,MLT,몰타,Malta,5,Y,N
+134,MNE,몬테네그로,Montenegro,5,Y,N
+135,MON,모나코,Monaco,5,Y,N
+136,MOZ,모잠비크,Mozambique,1,Y,N
+137,MRI,모리셔스,Mauritius,1,Y,N
+138,MTN,모리타니,Mauritania,1,Y,N
+139,MYA,미얀마,Myanmar,3,Y,N
+140,NAM,나미비아,Namibia,1,Y,N
+141,NCA,니카라과,Nicaragua,6,Y,N
+142,NED,네덜란드,Netherlands,5,Y,N
+143,NEP,네팔,Nepal,3,Y,N
+144,NGR,나이지리아,Nigeria,1,Y,N
+145,NIG,니제르,Niger,1,Y,N
+146,NOR,노르웨이,Norway,5,Y,N
+147,NRU,나우루,Nauru,4,Y,N
+148,NZL,뉴질랜드,New Zealand,4,Y,N
+149,OMA,오만,Oman,3,Y,N
+150,PAK,파키스탄,Pakistan,3,Y,N
+151,PAN,파나마,Panama,6,Y,N
+152,PAR,파라과이,Paraguay,7,Y,N
+153,PER,페루,Peru,7,Y,N
+154,PHI,필리핀,Philippines,3,Y,N
+155,PLE,팔레스타인,Palestine,3,Y,N
+156,PLW,팔라우,Palau,4,Y,N
+157,PNG,파푸아뉴기니,Papua New Guinea,4,Y,N
+158,POL,폴란드,Poland,5,Y,N
+159,POR,포르투갈,Portugal,5,Y,N
+160,PRK,조선민주주의인민공화국,North Korea,3,Y,N
+161,PUR,푸에르토리코,Puerto Rico,6,Y,N
+162,QAT,카타르,Qatar,3,Y,N
+163,ROU,루마니아,Romania,5,Y,N
+164,RSA,남아프리카,South Africa,1,Y,N
+165,RUS,러시아,Russia,5,Y,N
+166,RWA,르완다,Rwanda,1,Y,N
+167,SAM,사모아,Samoa,4,Y,N
+168,SEN,세네갈,Senegal,1,Y,N
+169,SEY,세이셸,Seychelles,1,Y,N
+170,SIN,싱가포르,Singapore,3,Y,N
+171,SKN,세인트키츠 네비스,Saint Kitts and Nevis,7,Y,N
+172,SLE,시에라리온,Sierra Leone,1,Y,N
+173,SLO,슬로베니아,Slovenia,5,Y,N
+174,SMR,산마리노,San Marino,5,Y,N
+175,SOL,솔로몬 제도,Solomon Islands,4,Y,N
+176,SOM,소말리아,Somalia,1,Y,N
+177,SRB,세르비아,Serbia,5,Y,N
+178,SRI,스리랑카,Sri Lanka,3,Y,N
+179,STP,상투메 프린시페,Sao Tome and Principe,1,Y,N
+180,SUD,수단,Sudan,1,Y,N
+181,SUI,스위스,Switzerland,5,Y,N
+182,SUR,수리남,Suriname,7,Y,N
+183,SVK,슬로바키아,Slovakia,5,Y,N
+184,SWE,스웨덴,Sweden,5,Y,N
+185,SWZ,스와질란드,Swaziland,1,Y,N
+186,SYR,시리아아랍공화국,Syria,3,Y,N
+187,TAN,탄자니아연합공화국,Tanzania,1,Y,N
+188,TGA,통가,Tonga,4,Y,N
+189,THA,타이,Thailand,3,Y,N
+190,TJK,타지키스탄,Tajikistan,3,Y,N
+191,TKM,투르크메니스탄,Turkmenistan,3,Y,N
+192,TLS,동티모르민주공화국,Timor-Leste,4,Y,N
+193,TOG,토고,Togo,1,Y,N
+194,TPE,대만,Chinese Taipei,3,Y,N
+195,TRI,트리니다드 토바고,Trinidad and Tobago,6,Y,N
+196,TUN,튀니지,Tunisia,1,Y,N
+197,TUR,터키,Turkey,3,Y,N
+198,TUV,투발루,Tuvalu,4,Y,N
+199,UAE,아랍에미리트연방,United Arab Emirates,3,Y,N
+200,UGA,우간다,Uganda,1,Y,N
+201,UKR,우크라이나,Ukraine,5,Y,N
+202,URU,우루과이,Uruguay,7,Y,N
+203,USA,미국,United States,6,Y,N
+204,UZB,우즈베키스탄,Uzbekistan,3,Y,N
+205,VAN,바누아투,Vanuatu,4,Y,N
+206,VEN,베네수엘라,Venezuela,7,Y,N
+207,VIE,베트남,Vietnam,3,Y,N
+208,VIN,세인트빈센트 그레나딘,Saint Vincent and the Grenadines,7,Y,N
+209,YEM,예멘,Yemen,3,Y,N
+210,ZAM,잠비아,Zambia,1,Y,N
+211,ZIM,짐바브웨,Zimbabwe,1,Y,N
