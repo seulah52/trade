@@ -1,111 +1,82 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
-import plotly.graph_objects as go
-import glob
 import os
 
 # 페이지 설정
-st.set_page_config(page_title="관세청 선용품 무역통계 대시보드", layout="wide")
+st.set_page_config(page_title="관세청 선용품 무역통계", layout="wide")
 
 st.title("🚢 전국 항구별 선용품 무역통계 분석")
-st.markdown("관세청 데이터를 기반으로 한 연도별 선용품 무역 트렌드 대시보드입니다.")
 
-# 1. 데이터 로드 및 전처리 함수
+# 1. 데이터 로드 함수 (헤더 3줄 처리)
 @st.cache_data
-def load_data():
-    # 파일 경로 리스트 (실제 환경에 맞춰 수정 필요)
-    # 여기서는 예시로 2021~2025년 일반 통계 파일만 합치는 로직을 보여드립니다.
-    files = [
-        '관세청_전국 항구별 선용품 무역통계_20251231.xlsx - 2025년.csv',
-        '관세청_전국 항구별 선용품 무역통계_20251231.xlsx - 2024년.csv',
-        '관세청_전국 항구별 선용품 무역통계_20251231.xlsx - 2023년.csv',
-        '관세청_전국 항구별 선용품 무역통계_20251231.xlsx - 2022년.csv',
-        '관세청_전국 항구별 선용품 무역통계_20251231.xlsx - 2021년.csv'
-    ]
+def load_combined_data():
+    # 파일 목록 (업로드하신 파일명 패턴 기반)
+    files = [f for f in os.listdir('.') if f.endswith('.csv') and '환급대상물품' in f]
     
-    all_years = []
+    all_data = []
     for f in files:
-        if os.path.exists(f):
-            year = f.split(' - ')[1][:4]
-            # 헤더가 복잡하므로 3행부터 읽거나 컬럼을 직접 지정해야 함
-            df = pd.read_csv(f, skiprows=3) 
-            # 실제 파일 구조에 맞게 컬럼명 재정의 (항구, 품목, 연간합계_금액 등)
-            # 여기서는 '연간 합계' 컬럼의 위치를 찾아 데이터를 추출합니다.
+        try:
+            # 연도 추출 (파일명에서 '2025' 등 4자리 숫자)
+            year = "".join(filter(str.isdigit, f))[:4]
+            
+            # 데이터 읽기: 0, 1번 행은 무시하고 2번 행부터 데이터로 인식
+            df = pd.read_csv(f, skiprows=2)
+            
+            # 컬럼명 정리 (항구, 항구명, ..., 연간합계_건수, 연간합계_금액)
+            # 마지막 두 컬럼이 연간 합계 건수와 금액입니다.
+            df = df.iloc[:, [0, 1, -2, -1]] 
+            df.columns = ['항구코드', '항구명', '연간합계_건수', '연간합계_금액']
             df['연도'] = year
-            all_years.append(df)
+            
+            # 숫자 데이터 변환 (쉼표 제거)
+            df['연간합계_금액'] = pd.to_numeric(df['연간합계_금액'].astype(str).str.replace(',', ''), errors='coerce')
+            df['연간합계_건수'] = pd.to_numeric(df['연간합계_건수'].astype(str).str.replace(',', ''), errors='coerce')
+            
+            all_data.append(df.dropna(subset=['항구명']))
+        except:
+            continue
+            
+    return pd.concat(all_data, ignore_index=True) if all_data else pd.DataFrame()
+
+# 데이터 로드
+df = load_combined_data()
+
+if df.empty:
+    st.error("데이터 파일을 찾을 수 없습니다. CSV 파일들이 코드와 같은 폴더에 있는지 확인하세요.")
+else:
+    # 사이드바 필터
+    st.sidebar.header("🔍 검색 필터")
+    target_ports = st.sidebar.multiselect("분석할 항구 선택", options=df['항구명'].unique(), default=['부산항', '인천항', '울산항', '마산항'])
     
-    return pd.concat(all_years, ignore_index=True)
+    filtered_df = df[df['항구명'].isin(target_ports)].sort_values('연도')
 
-# 데이터 불러오기 (파일이 없을 경우 대비 에러 처리)
-try:
-    df_raw = load_data()
-    # 데이터 클렌징 (예시: '합계' 행 제외 및 숫자 변환)
-    df_raw = df_raw.dropna(subset=['항구'])
-    df_filtered = df_raw[df_raw['품목분류\n(대분류명)'] != '합계']
-    
-    # 2. 사이드바 필터
-    st.sidebar.header("🔍 데이터 필터")
-    selected_ports = st.sidebar.multiselect("분석할 항구를 선택하세요", 
-                                            options=df_filtered['항구'].unique(),
-                                            default=df_filtered['항구'].unique()[:5])
-    
-    if not selected_ports:
-        st.warning("항구를 하나 이상 선택해주세요.")
-        st.stop()
-
-    final_df = df_filtered[df_filtered['항구'].isin(selected_ports)]
-
-    # 3. 상단 KPI 지표
-    # '연간 합계' 금액 컬럼을 숫자로 변환 (쉼표 제거 등)
-    col_total_amt = final_df.columns[-2] # 파일 구조상 끝에서 두번째가 보통 연간 합계 금액
-    final_df[col_total_amt] = pd.to_numeric(final_df[col_total_amt].replace(',', ''), errors='coerce').fillna(0)
-
-    m1, m2, m3 = st.columns(3)
+    # KPI 지표
+    m1, m2 = st.columns(2)
     with m1:
-        st.metric("총 분석 항구 수", f"{len(selected_ports)}개")
+        total_amt = filtered_df['연간합계_금액'].sum()
+        st.metric("선택 항구 총 거래액", f"${total_amt:,.0f}")
     with m2:
-        total_val = final_df[col_total_amt].sum()
-        st.metric("선용품 총 거래액", f"{total_val:,.0f} USD")
-    with m3:
-        st.metric("최다 품목", final_df.groupby('품목분류\n(대분류명)')[col_total_amt].sum().idxmax())
+        total_cnt = filtered_df['연간합계_건수'].sum()
+        st.metric("선택 항구 총 거래 건수", f"{total_cnt:,.0f}건")
 
     st.divider()
 
-    # 4. 시각화 섹션
-    c1, c2 = st.columns([6, 4])
+    # 시각화 1: 연도별 거래 규모 추이
+    st.subheader("📈 연도별 선용품 거래 규모 추이 (환급대상)")
+    fig = px.line(filtered_df, x='연도', y='연간합계_금액', color='항구명', markers=True,
+                  labels={'연간합계_금액': '거래 금액 ($)'}, template='plotly_dark')
+    st.plotly_chart(fig, use_container_width=True)
 
+    # 시각화 2: 항구별 비중 (가장 최근 연도 기준)
+    st.subheader("📊 최신 연도 기준 항구별 비중")
+    latest_year = filtered_df['연도'].max()
+    pie_data = filtered_df[filtered_df['연도'] == latest_year]
+    
+    c1, c2 = st.columns(2)
     with c1:
-        st.subheader("📈 연도별/항구별 거래 규모 추이")
-        # 연도별 합계 계산
-        trend_df = final_df.groupby(['연도', '항구'])[col_total_amt].sum().reset_index()
-        fig_line = px.line(trend_df, x='연도', y=col_total_amt, color='항구', 
-                           markers=True, template='plotly_white',
-                           labels={col_total_amt: '거래 금액 (USD)'})
-        st.plotly_chart(fig_line, use_container_width=True)
-
+        fig_pie = px.pie(pie_data, values='연간합계_금액', names='항구명', hole=0.4, title=f"{latest_year}년 금액 기준")
+        st.plotly_chart(fig_pie)
     with c2:
-        st.subheader("🍰 항구별 거래 비중")
-        fig_pie = px.pie(trend_df, values=col_total_amt, names='항구', 
-                         hole=0.4, color_discrete_sequence=px.colors.sequential.RdBu)
-        st.plotly_chart(fig_pie, use_container_width=True)
-
-    st.divider()
-
-    c3, c4 = st.columns(2)
-
-    with c3:
-        st.subheader("📦 주요 품목별 순위 (TOP 10)")
-        item_df = final_df.groupby('품목분류\n(대분류명)')[col_total_amt].sum().sort_values(ascending=True).tail(10).reset_index()
-        fig_bar = px.bar(item_df, x=col_total_amt, y='품목분류\n(대분류명)', orientation='h',
-                         color=col_total_amt, color_continuous_scale='Viridis')
-        st.plotly_chart(fig_bar, use_container_width=True)
-
-    with c4:
-        st.subheader("📋 세부 데이터 요약")
-        st.dataframe(final_df[['연도', '항구', '품목분류\n(대분류명)', col_total_amt]].sort_values(by='연도', ascending=False), 
-                     use_container_width=True, hide_index=True)
-
-except Exception as e:
-    st.error(f"데이터를 로드하는 중 오류가 발생했습니다: {e}")
-    st.info("파일 이름이 코드와 일치하는지, 데이터 경로가 올바른지 확인해주세요.")
+        st.write(f"**{latest_year}년 상세 데이터**")
+        st.dataframe(pie_data[['항구명', '연간합계_건수', '연간합계_금액']].reset_index(drop=True), use_container_width=True)
